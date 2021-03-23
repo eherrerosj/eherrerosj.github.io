@@ -21,7 +21,7 @@ title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Enrique Herreros"
 description              : "Machine Learning Engineer"
-url                      : "https://eherrerosj.github.io"
+url                      : "https://eherreros.com"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
@@ -71,7 +71,7 @@ naver_site_verification  :
 
 # Social Sharing
 twitter:
-  username               :
+  username               : eherrerosj
 facebook:
   username               :
   app_id                 :
@@ -88,7 +88,7 @@ social:
 analytics:
   provider               : false # false (default), "google", "google-universal", "google-gtag", "custom"
   google:
-    tracking_id          :
+    tracking_id          : G-B1H5ZVW41D
     anonymize_ip         : # true, false (default)
 
 
