@@ -14,6 +14,7 @@ I co-founded 2 ML/Data startups: [Shalion](https://shalion.com) and [Xplore.ai](
 4. Knowing when to politely say "no" ∝ focus ∝ productivity. Eg: meetings != collaboration
 5. Hard work and learning **always** pays off and compounds
 
+> You can see & download my CV <a href="/cv">here</a>
 
 **What am I currently learning / trying to improve?**
 - FastAPI and SQLAlchemy

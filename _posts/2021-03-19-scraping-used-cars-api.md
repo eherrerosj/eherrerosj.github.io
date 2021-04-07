@@ -25,7 +25,7 @@ curl "https://www.google.com/search?q=site%3Amedium.com+scraping+%28tutorial+OR+
  
 **_What can you expect from this post?_** In short, I want to show you a way to scrape clean and already structured data from a website without having to deal with unstructured HTMLs. The process will teach you how to reverse engineer the API service endpoints from a large website by intercepting its backend ⟷ frontend communications using the mobile app version of the service. Then, I will show you <mark>how to introspect the GraphQL API without having access to it's official docs</mark>. I will leave to a different post how to run analytics and create a dashboard out of the data we obtained after this post.
 
-_Note_ 📝: this is not an universal process that will work every time, but it may give you yet-another-technique and a head start in cases where your target website has a mobile app.
+> _Note_ 📝: this is not an universal process that will work every time, but it may give you yet-another-technique and a head start in cases where your target website has a mobile app.
 
 ## API >> Web page
 As a rule of thumb. It's great if we can extract data through a target's site API instead of having to parse HTML files for various reasons:
@@ -37,6 +37,10 @@ As a rule of thumb. It's great if we can extract data through a target's site AP
 > ✏️ Tip: when scraping, APIs are first-class citizens. They rule over HTML web page. Always spend some time looking for APIs. Normally you would first try using a desktop browser: browsing the pages of interest while the console developer is open and on the "network" tab with the "XHR" filter activated.
 
 For this tutorial, I'm going to be scraping [AutoScout24](https://www.autoscout24.com/), which is the largest used car marketplace in Europe, with 2MM+ active listings announced at the moment of writing this post. Due to the aforementioned reasons, we want to scrape the site using some API if possible. Please, make sure you always [respect](https://towardsdatascience.com/ethics-in-web-scraping-b96b18136f01) the target servers.
+
+
+![AS24 home](/assets/images/post-scraping-graphql/as24-web-home.png "AS24 home")
+{: .full}
 
 We can first try finding interesting endpoints with the XHR technique. We go to the console developer while launching a search with filters, then click on network, then XHR, then results and we can click on the different requests from the list. We see that none of them displays results in json format, which is what we would expect from a REST API:
 
@@ -69,7 +73,12 @@ Let's start the show! 🎸🥁🎹
 
 
 1. Enable the SSL certificate. On iOS: `settings > general > about > certificate trust settings > toggle mitmproxy to ON`
-![iOS https certificate activation]( "iOS https certificate activation")
+<figure class="third">
+	<img src="">
+	<img src="/assets/images/post-scraping-graphql/ios-trust-certificate.png">
+  <img src="">
+  <small style="text-align:center;width:100%;">iOS https certificate activation</small>  
+</figure>
 1. Run `mitmproxy` on your computer's shell
 1. Open the AutoScout24 app on your mobile device. You should now start seeing the traffic flow 😍
 ![MITM proxy capturing all mobile's web traffic](/assets/images/post-scraping-graphql/as24-mitm-results.png "MITM proxy capturing all mobile's web traffic")
@@ -78,7 +87,10 @@ Let's start the show! 🎸🥁🎹
 _Note_ 📝: hit `?` while on mitm proxy cli to get the shortcut help list. Or visit [this](https://www.stut-it.net/blog/2017/mitmproxy-cheatsheet.html) webpage.
 
 ## Finding the API
-Placeholder for Snooping around Talk about graphql, the ios-user and tokens, results, documentation, toy swagger, Postman, app captures, searches, etc
+__Placeholder for Snooping around Talk about graphql, the ios-user and tokens, results, documentation, toy swagger, Postman, app captures, searches, etc__
+
+
+
 
 I'm interested in the listing endpoint. Let's focus on that endpoint from MITM's flowlist, moving with the cursors (you'll see a `>>` on the left side of the screen). Hit `enter` to switch the `flowview` view, where we can inspect the header and body of both `request` and `response`.
 
@@ -120,12 +132,18 @@ Placeholder for GraphQL introspection queries. Basic, models, objetcs, and compl
 >1. From MITM's flowlist view, hit `K`, then `a`, select the context `flowlist`
 >1. Type `c export.clip curl @focus`. Which will use the key `c` to copy the request as curl
 
+
+## Building the GraphQL queries
+- Optimal amount of data (remove financing, ads, etc)
+- Only listings, no images only URL
+- Brand list from website
+
 ## Building a spider
-Placeholder for Scrapy stuff, settings, query assets, etc
+Check the <a href="{% post_url 2021-03-19-scraping-used-cars-api %}">next post I wrote about the steps to build a scraping spider in Python</a> using the Scrapy framework. This allows you to automate and easily manage the extraction of data from APIs and websites with a single command.
 
 ## Summary
-- Invest some time looking for API data sources. Scrape HTMLs after giving up
-- MITM Proxy is a powerful tool and useful in any mobile-involved scenario
-- Learning backend and network concepts is a must for advanced web scraping
-- Scrapy is my favorite scraping framework. Thanks so much to their [creators and contributors](https://github.com/scrapy/scrapy/graphs/contributors)
-- You can find the source code for this project in my GitHub -> 
+- Invest some time looking for API data sources (heads-up upon GraphQL and REST resources). These sources are faster, more reliable, have a pre-defined schema and are less restrictive. Only scrape HTMLs after giving up on finding such data sources
+- Unsecurized GraphQL deployments allow full introspection, which is similar to having access to up to date documentation of resources, models and entities of an API
+- MITM Proxy is a powerful tool and useful in any mobile-involved scenario. It's worth learning the hotkeys and shortcuts because the CLI version of the tool is more powerful than the web app
+- Learning backend and network concepts is a must for complex and respectful web scraping 
+- You can find the source code for this project in <a href="https://github.com/the-copper-club/cold-wheels-spider">my GitHub</a>
