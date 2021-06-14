@@ -12,21 +12,19 @@ I co-founded 2 ML/Data startups: [Shalion](https://shalion.com) and [Xplore.ai](
 2. The value of team cohesion and trust
 3. Learn to thrive in chaos, deal with ambiguity & create structures
 4. Knowing when to politely say "no" ∝ focus ∝ productivity. Eg: meetings != collaboration
-5. Hard work and learning **always** pays off and compounds
+5. Hard work and learning **always** pays off because it compounds
 
 > You can see & download my CV <a href="/cv">here</a>
 
-**What am I currently learning / trying to improve?**
-- FastAPI and SQLAlchemy
-- No-code frontends. Thrilled with the idea of publishing a project that uses at least one of: [retool](https://retool.com/), [datasette.io](https://docs.datasette.io), [Dash](https://plotly.com/dash/). Feeling curious 🤔 with [Tailwind](https://tailwindcss.com/)
-- Kitesurf. The joy is real. But still can't jump
-- Portuguese (because of my girlfriend 🇧🇷). I'm using [Duolingo](https://apps.apple.com/es/app/duolingo/id570060128) and [Pimsleur](https://www.pimsleur.com/)
-- Machine Learning. Always have time for an interesting Kaggle competition. Now involved in [Shopee - Price Match Guarantee (Determine if two products are the same by their images)](https://www.kaggle.com/c/shopee-product-matching)
-- Basic investment. Just learning basic [patterns](https://www.investopedia.com/articles/active-trading/092315/5-most-powerful-candlestick-patterns.asp), where to [look](https://www.youtube.com/watch?v=lBBXmim527A) in a balance sheet and income statements. Not getting into bitcoin though :)
+**What am I up to?**
+- SaaS + Ecommerce + Data 🚀. Most often within this triangle. I'm always happy to talk about this, <a href='https://t.me/eherrerosj'>ping me</a> if you think I can be helpful
+- Moving around. After 2 years living in Barcelona we became remote for a while: now we are for 1 month in Canary islands (<a href='/assets/images/about/fuerteventura1.jpg'>Fuerteventura</a> and Lanzarote), then 1 month in Porto and then who knows
+- Learning Ruby. Will soon tell you why 👨🏻‍💻. In the meantime I'm practicing - this blog uses it, and I'm also developing an app to unfollow inactive twitter friends :) -
+- (Inconsistently) learning Portuguese (🇧🇷 partner). I'm using Duolingo and Pimsleur
+- Got a bit into cryptos, couldn't help it 🤷🏻‍♂️
 
-**Learning backlog**
-- Basic piano
-- Bouldering
-- Improve at cooking. For now, I can manage the [Thermomix 🤖](https://cookidoo.es) at least
-- Improve snowboarding / learn skiing
-- Take sailing lessons. Legally I'm allowed to pilot up to 23m boats but I need to practice! 🤷
+
+**Hobbies**
+- Kitesurf. I learned how to <a href='/assets/images/about/kitesurf.jpg'>jump</a>. Still learning how to land though 😂
+- Always up for a squash or padel match 🎾
+- Backlog: I want to take bouldering lessons, buy a bike when we settle back and improve snowboarding

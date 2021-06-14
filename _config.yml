@@ -95,9 +95,9 @@ analytics:
 # Site Author
 author:
   name             : "Enrique Herreros"
-  avatar           : "https://media-exp1.licdn.com/dms/image/C4E03AQFpqKW6YhWQiQ/profile-displayphoto-shrink_400_400/0/1534771140235?e=1621468800&v=beta&t=t6dpASKp7CH0lG8SYcsph_W29dHukJms9HfYney24Uc"
+  avatar           : "./assets/images/general-resources/enrique.jpg"
   bio              : "Machine Learning Engineer"
-  location         : "Madrid (🇪🇸)"
+  location         : "Either in 🇪🇸 or 🇨🇦"
   email            :
   links:
     - label: "LinkedIn"

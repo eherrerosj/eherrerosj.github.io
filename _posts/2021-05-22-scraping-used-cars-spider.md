@@ -10,7 +10,7 @@ tags:
   - ecommerce
 ---
 
-This post is a continuation of <a href="{% post_url 2021-03-19-scraping-used-cars-api %}">another post were I wrote about a technique to find private APIs using your phone apps and a Man-in-the-Middle attack</a>. If you haven't read it and you are curious to know how to find, go and check it. If you are only interested in scraping a GraphQL API using the best Python scraping framework, keep reading.
+This post is a continuation of <a href="{% post_url 2021-04-20-scraping-used-cars-api %}">another post were I wrote about a technique to find private APIs using your phone apps and a Man-in-the-Middle attack</a>. If you haven't read it and you are curious to know how to find, go and check it. If you are only interested in scraping a GraphQL API using the best Python scraping framework, keep reading.
 
 
 ## Building a spider
