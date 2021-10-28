@@ -20,7 +20,7 @@ title                    : "@eherrerosj"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Enrique Herreros"
-description              : "Machine Learning Engineer"
+description              : "Crypto Software Engineer"
 url                      : "https://eherreros.com"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
