@@ -138,8 +138,8 @@ Placeholder for GraphQL introspection queries. Basic, models, objetcs, and compl
 - Only listings, no images only URL
 - Brand list from website
 
-## Building a spider
-Check the <a href="{% post_url 2021-04-20-scraping-used-cars-api %}">next post I wrote about the steps to build a scraping spider in Python</a> using the Scrapy framework. This allows you to automate and easily manage the extraction of data from APIs and websites with a single command.
+## Next steps
+From here, you can build a spider using Scrapy. 
 
 ## Summary
 - Invest some time looking for API data sources (heads-up upon GraphQL and REST resources). These sources are faster, more reliable, have a pre-defined schema and are less restrictive. Only scrape HTMLs after giving up on finding such data sources
