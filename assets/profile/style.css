@@ -1,0 +1,609 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f7f3ec;
+  --ink: #302b26;
+  --quiet: #746b62;
+  --accent: #a24f38;
+  --line: #ded6ca;
+  --panel: #fffaf3;
+  --hover: #eee6da;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --serif:
+    "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+}
+a:hover {
+  color: var(--accent);
+}
+.masthead {
+  min-height: 112px;
+  margin: 0 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  gap: 24px;
+}
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font: 24px var(--serif);
+  letter-spacing: -0.5px;
+}
+.mark {
+  width: 42px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 22px 22px 4px 4px;
+  font: italic 23px var(--serif);
+  color: var(--accent);
+}
+.identity small {
+  display: block;
+  font: 10px var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 1.7px;
+  color: var(--quiet);
+  margin-top: 7px;
+}
+nav {
+  display: flex;
+  gap: 32px;
+  font-size: 13px;
+  color: var(--quiet);
+}
+nav a {
+  padding: 14px 0;
+}
+main,
+footer {
+  max-width: 1440px;
+  margin: auto;
+}
+.intro {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 8%;
+  align-items: center;
+  padding: 80px 7% 72px;
+}
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  line-height: 1.8;
+  color: var(--accent);
+  margin: 0 0 28px;
+}
+.status {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-right: 7px;
+  vertical-align: 1px;
+}
+h1,
+h2,
+h3,
+p,
+figure {
+  margin-top: 0;
+}
+h1 {
+  font: 400 clamp(64px, 6.8vw, 100px)/0.99 var(--serif);
+  letter-spacing: -4px;
+  margin-bottom: 32px;
+}
+em {
+  font-weight: 400;
+  color: var(--accent);
+}
+.hello {
+  font: 400 clamp(21px, 2vw, 28px)/1.5 var(--serif);
+  letter-spacing: -0.3px;
+  margin-bottom: 19px;
+}
+.bio {
+  max-width: 460px;
+  color: var(--quiet);
+  font-size: 15px;
+  line-height: 1.85;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 26px;
+  margin-top: 32px;
+}
+.button {
+  display: inline-flex;
+  gap: 40px;
+  align-items: center;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 17px 22px;
+  font-size: 13px;
+  border: 1px solid var(--ink);
+  transition: background 0.2s;
+}
+.button:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+.text-link {
+  font-size: 13px;
+  border-bottom: 1px solid var(--line);
+  padding: 8px 0;
+}
+.text-link span {
+  margin-left: 12px;
+}
+.portrait {
+  margin: 0;
+  transform: rotate(2deg);
+  max-width: 440px;
+  justify-self: center;
+  width: 100%;
+}
+.portrait-paper {
+  background: #eee9e0;
+  padding: 13px;
+  box-shadow:
+    0 14px 40px #44301c13,
+    0 2px 5px #44301c12;
+  border: 1px solid #ded6ca;
+}
+.portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 895/1200;
+  object-fit: cover;
+}
+.portrait figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 3px;
+  font-size: 10px;
+  color: var(--quiet);
+  letter-spacing: 0.6px;
+}
+.handwritten {
+  font: italic 20px var(--serif);
+  color: var(--accent);
+  letter-spacing: 0;
+}
+.credentials {
+  margin: 0 7%;
+  padding: 28px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  border-block: 1px solid var(--line);
+}
+.credentials strong {
+  display: block;
+  font: 400 25px var(--serif);
+  margin-bottom: 9px;
+}
+.credentials span {
+  font-size: 11px;
+  color: var(--quiet);
+  line-height: 1.6;
+  display: block;
+}
+.section {
+  padding: 100px 7%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10%;
+}
+h2 {
+  font: 400 clamp(40px, 4.4vw, 62px)/1.08 var(--serif);
+  letter-spacing: -1.7px;
+  margin-bottom: 24px;
+}
+.section-intro > p:last-child {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--quiet);
+}
+.chapter {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 20px;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+}
+.chapter:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.chapter-number {
+  font: italic 15px var(--serif);
+  color: var(--quiet);
+  padding-top: 7px;
+}
+.current .chapter-number {
+  color: var(--accent);
+}
+h3 {
+  font: 400 30px var(--serif);
+  letter-spacing: -0.6px;
+  margin-bottom: 9px;
+}
+h3 a span {
+  font: 18px var(--sans);
+  color: var(--accent);
+  margin-left: 10px;
+}
+.chapter .role {
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 15px;
+}
+.chapter p:last-child {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--quiet);
+  max-width: 510px;
+  margin-bottom: 0;
+}
+.library-card {
+  margin: 0 7%;
+  padding: 48px 6%;
+  border: 1px solid var(--line);
+  background: var(--hover);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  gap: 32px;
+}
+.library-card:hover {
+  color: var(--ink);
+}
+.library-card .eyebrow {
+  margin-bottom: 22px;
+}
+.library-card h2 {
+  font-size: 48px;
+}
+.library-card p:not(.eyebrow) {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--quiet);
+  margin-bottom: 24px;
+}
+.library-card .text-link {
+  color: var(--accent);
+}
+.book-stack {
+  position: relative;
+  width: 235px;
+  height: 260px;
+  margin-right: 30px;
+  flex-shrink: 0;
+}
+.book {
+  display: block;
+  position: absolute;
+  width: 170px;
+  height: 225px;
+  border: 1px solid var(--accent);
+  border-left: 9px solid var(--accent);
+  border-radius: 2px 7px 7px 2px;
+  box-shadow: 6px 12px 18px #44301c18;
+}
+.book-back {
+  background: var(--panel);
+  transform: rotate(13deg);
+  left: 55px;
+  top: 10px;
+}
+.book-front {
+  background: var(--bg);
+  transform: rotate(-10deg);
+  left: 10px;
+  top: 15px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 35px;
+  transition: transform 0.3s;
+}
+.book-front > span {
+  font: italic 55px var(--serif);
+  color: var(--accent);
+}
+.book small {
+  font-size: 8px;
+  letter-spacing: 2px;
+  line-height: 1.8;
+  text-align: center;
+}
+.library-card:hover .book-front {
+  transform: rotate(-15deg) translateY(-6px);
+}
+.contact {
+  text-align: center;
+  padding: 100px 7%;
+}
+.contact .eyebrow {
+  margin-bottom: 24px;
+}
+.contact h2 {
+  font-size: clamp(40px, 4.5vw, 64px);
+}
+.contact-email {
+  display: inline-block;
+  font-size: 16px;
+  border-bottom: 1px solid var(--line);
+  padding: 12px 0;
+}
+.contact-email span {
+  color: var(--accent);
+  margin-left: 28px;
+}
+footer {
+  border-top: 1px solid var(--line);
+  padding: 30px 7%;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  font-size: 11px;
+  color: var(--quiet);
+}
+footer div {
+  display: flex;
+  gap: 24px;
+}
+footer a {
+  padding: 10px 0;
+}
+.skip {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 14px;
+  z-index: 10;
+}
+.skip:focus {
+  top: 12px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #211e1b;
+    --ink: #eee5d8;
+    --quiet: #b5a99b;
+    --accent: #e2a184;
+    --line: #4a4036;
+    --panel: #302923;
+    --hover: #2b2520;
+  }
+  .portrait-paper {
+    background: #cfc4b5;
+    border-color: #4a4036;
+  }
+}
+@media (min-width: 1600px) {
+  .masthead {
+    max-width: 1238px;
+    margin: auto;
+  }
+}
+@media (max-width: 800px) {
+  .masthead {
+    margin: 0 6%;
+    min-height: 94px;
+  }
+  .identity {
+    font-size: 20px;
+  }
+  .identity small {
+    font-size: 8px;
+  }
+  nav {
+    gap: 18px;
+    font-size: 12px;
+  }
+  .intro {
+    gap: 6%;
+    padding: 60px 6%;
+  }
+  .intro h1 {
+    font-size: 65px;
+    letter-spacing: -3px;
+  }
+  .hello {
+    font-size: 22px;
+  }
+  .bio {
+    font-size: 14px;
+  }
+  .actions {
+    gap: 18px;
+  }
+  .portrait-paper {
+    padding: 8px;
+  }
+  .portrait figcaption {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .credentials {
+    margin: 0 6%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+  .section {
+    padding: 70px 6%;
+    gap: 6%;
+  }
+  .chapter {
+    gap: 10px;
+    grid-template-columns: 28px 1fr;
+  }
+  .library-card {
+    margin: 0 6%;
+    padding: 36px;
+  }
+  .book-stack {
+    margin-right: 0;
+    transform: scale(0.8);
+    width: 190px;
+  }
+  .library-card h2 {
+    font-size: 40px;
+  }
+  footer {
+    padding-inline: 6%;
+  }
+}
+@media (max-width: 580px) {
+  nav a:first-child {
+    display: none;
+  }
+  .masthead {
+    gap: 12px;
+  }
+  .identity {
+    gap: 10px;
+    font-size: 19px;
+  }
+  .mark {
+    width: 32px;
+    height: 40px;
+    font-size: 20px;
+  }
+  .intro {
+    grid-template-columns: 1fr;
+    padding-top: 42px;
+    gap: 40px;
+  }
+  .intro h1 {
+    font-size: 74px;
+  }
+  .eyebrow {
+    font-size: 9px;
+    letter-spacing: 1.3px;
+    margin-bottom: 24px;
+  }
+  .hello {
+    font-size: 23px;
+  }
+  .desktop-break {
+    display: none;
+  }
+  .portrait {
+    max-width: 310px;
+  }
+  .intro .bio {
+    max-width: 100%;
+  }
+  .portrait figcaption {
+    flex-direction: row;
+  }
+  .credentials strong {
+    font-size: 23px;
+  }
+  .credentials span {
+    font-size: 11px;
+  }
+  .section {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .section-intro h2 br {
+    display: none;
+  }
+  .section-intro > p:last-child {
+    display: none;
+  }
+  .section h2 {
+    font-size: 44px;
+  }
+  .chapter {
+    grid-template-columns: 34px 1fr;
+    padding: 25px 0;
+  }
+  .library-card {
+    padding: 30px 25px;
+    position: relative;
+    min-height: 350px;
+  }
+  .library-card > div:first-child {
+    position: relative;
+    z-index: 1;
+  }
+  .library-card h2 {
+    font-size: 39px;
+  }
+  .book-stack {
+    position: absolute;
+    right: -80px;
+    bottom: -75px;
+    transform: scale(0.7);
+    opacity: 0.2;
+  }
+  .contact {
+    padding: 72px 6%;
+  }
+  .contact h2 {
+    font-size: 42px;
+  }
+  .contact-email {
+    font-size: 14px;
+  }
+  footer {
+    flex-direction: column;
+    gap: 10px;
+  }
+  footer div {
+    gap: 28px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
+  }
+}
