@@ -901,3 +901,184 @@ footer a {
   color: var(--quiet);
   line-height: 1.6;
 }
+.journey-stop {
+  border: 0;
+  padding: 0;
+  margin-bottom: 24px;
+  isolation: isolate;
+}
+.career-card {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow:
+    0 4px 7px #302b2605,
+    0 12px 32px #302b2609;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    border-color 0.2s;
+}
+.career-card summary {
+  padding: 25px 28px 20px;
+  list-style: none;
+  cursor: pointer;
+  border-radius: 14px;
+}
+.career-card summary::-webkit-details-marker {
+  display: none;
+}
+.career-card summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+.journey-stop h3 {
+  font-size: clamp(31px, 2.8vw, 40px);
+}
+.career-card .stop-role {
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+.card-disclosure {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-top: 1px solid var(--line);
+  margin-top: 20px;
+  padding-top: 14px;
+  font-size: 11px;
+  color: var(--quiet);
+}
+.card-plus {
+  font: 24px/1 var(--serif);
+  color: var(--accent);
+  transition: transform 0.2s;
+}
+.card-hide {
+  display: none;
+}
+.career-card[open] .card-hide {
+  display: inline;
+}
+.career-card[open] .card-show {
+  display: none;
+}
+.career-card[open] .card-plus {
+  transform: rotate(45deg);
+}
+.card-story {
+  padding: 0 28px 26px;
+}
+.journey-stop .card-story h4 {
+  padding-top: 5px;
+}
+.career-card[open] {
+  border-color: var(--accent);
+  box-shadow:
+    0 7px 16px #302b2609,
+    0 20px 45px #302b2612;
+}
+.journey-current .career-card {
+  border-color: var(--accent);
+}
+.journey-chapter:not(:first-child) {
+  margin-top: 38px;
+}
+.journey-stop.is-reading .career-card {
+  border-color: var(--accent);
+}
+@media (hover: hover) and (pointer: fine) and (min-width: 761px) {
+  .career-card:hover {
+    transform: translateY(-3px);
+  }
+  .journey-stop:has(.career-card[open]) {
+    z-index: 5;
+  }
+  .career-card[open] {
+    border-radius: 14px 14px 0 0;
+  }
+  .career-card[open] summary {
+    border-radius: 14px 14px 0 0;
+  }
+  .card-story {
+    position: absolute;
+    left: -1px;
+    right: -1px;
+    top: 100%;
+    background: var(--panel);
+    border: 1px solid var(--accent);
+    border-top: 0;
+    border-radius: 0 0 14px 14px;
+    box-shadow: 0 24px 35px #302b261a;
+    padding-top: 6px;
+  }
+  .card-story::before {
+    content: "";
+    display: block;
+    border-top: 1px solid var(--line);
+    margin-bottom: 18px;
+  }
+  .card-story {
+    animation: card-reveal 0.18s ease-out;
+  }
+}
+@keyframes card-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 760px) {
+  .career-card summary {
+    padding: 22px 20px 18px;
+  }
+  .card-story {
+    padding: 0 20px 23px;
+  }
+  .journey-stop h3 {
+    font-size: 34px;
+  }
+  .stop-meta {
+    flex-wrap: wrap;
+    gap: 6px 16px;
+  }
+  .card-disclosure {
+    font-size: 11px;
+    margin-top: 17px;
+  }
+  .journey-stop {
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  .journey-current {
+    margin-bottom: 0;
+  }
+  .journey-layout {
+    gap: 32px;
+  }
+  .journey-timeline {
+    padding-left: 20px;
+    margin-left: 0;
+  }
+  .journey-chapter::before {
+    left: -26px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .career-card,
+  .card-plus {
+    transition: none;
+  }
+  .card-story {
+    animation: none;
+  }
+}
+.career-card summary {
+  -webkit-tap-highlight-color: transparent;
+}
