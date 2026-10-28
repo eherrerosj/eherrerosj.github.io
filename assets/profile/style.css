@@ -73,13 +73,13 @@ a:hover {
   color: var(--quiet);
   margin-top: 7px;
 }
-nav {
+.masthead nav {
   display: flex;
   gap: 32px;
   font-size: 13px;
   color: var(--quiet);
 }
-nav a {
+.masthead nav a {
   padding: 14px 0;
 }
 main,
@@ -394,7 +394,7 @@ footer a {
   .identity small {
     font-size: 8px;
   }
-  nav {
+  .masthead nav {
     gap: 18px;
     font-size: 12px;
   }
@@ -445,7 +445,7 @@ footer a {
   }
 }
 @media (max-width: 580px) {
-  nav a:first-child {
+  .masthead nav a:first-child {
     display: none;
   }
   .masthead {
@@ -539,57 +539,187 @@ footer a {
     transition: none !important;
   }
 }
+
+/* The career is a continuous document; motion only marks the reading position. */
 .career {
-  padding: 90px 7% 70px;
+  padding: 100px 7% 64px;
 }
 .career-heading {
-  margin-bottom: 65px;
+  margin-bottom: 54px;
 }
-.career-heading h2 {
-  font-size: clamp(40px, 4.3vw, 62px);
-  max-width: 950px;
+.career-heading .eyebrow {
   margin-bottom: 24px;
 }
-.career-heading > p:last-child {
-  font-size: 16px;
-  line-height: 1.8;
+.career-heading-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: end;
+  gap: 12%;
+}
+.career-heading h2 {
+  font-size: clamp(52px, 5.7vw, 82px);
+  line-height: 1.02;
+  letter-spacing: -2.8px;
+  margin-bottom: 0;
+}
+.career-introduction {
+  padding-bottom: 5px;
+  max-width: 390px;
+}
+.career-introduction > p:first-child {
+  font: 24px/1.45 var(--serif);
+}
+.career-introduction > p:nth-child(2) {
+  font-size: 14px;
+  line-height: 1.7;
   color: var(--quiet);
-  max-width: 760px;
+}
+.career-start {
+  display: inline-flex;
+  align-items: center;
+  gap: 40px;
+  margin-top: 12px;
+  padding-block: 12px;
+  border-bottom: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 13px;
+}
+.career-start span {
+  font-size: 20px;
+}
+.career-overview {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 80px;
+}
+.career-overview a {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 20px 27px;
+  border-top: 1px solid var(--accent);
+  color: var(--ink);
+  transition: background 0.2s;
+}
+.career-overview a + a {
+  border-left: 1px solid var(--line);
+}
+.career-overview a:first-child {
+  padding-left: 0;
+}
+.career-overview a:last-child {
+  padding-right: 0;
+}
+.career-overview a::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 20px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 5px var(--bg);
+}
+.career-overview a:first-child::before {
+  left: 0;
+}
+.overview-date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--accent);
+  font: 11px var(--sans);
+  letter-spacing: 0.7px;
+  margin-bottom: 27px;
+}
+.overview-date span {
+  font-size: 22px;
+  line-height: 16px;
+  transition: transform 0.2s;
+}
+.career-overview strong {
+  font: 26px/1.15 var(--serif);
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+}
+.overview-companies {
+  font: 13px/1.6 var(--sans);
+  margin-bottom: 12px;
+}
+.overview-place {
+  font: 11px/1.7 var(--sans);
+  color: var(--quiet);
+  margin-top: auto;
+}
+.career-overview a:hover {
+  background: var(--hover);
+}
+.career-overview a:hover .overview-date span {
+  transform: translate(3px, 3px);
 }
 .journey-layout {
   display: grid;
-  grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.3fr);
+  grid-template-columns: minmax(240px, 0.75fr) minmax(0, 1.55fr);
   gap: 8%;
+  align-items: stretch;
 }
 .atlas-inner {
   position: sticky;
-  top: 30px;
-  border: 1px solid var(--line);
-  padding: 25px 22px;
-  background: var(--hover);
+  top: 28px;
 }
-.atlas-title {
+.atlas-topline {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 13px;
-  font: 23px var(--serif);
-}
-.atlas-title small {
-  display: block;
-  font: 11px var(--sans);
+  border-top: 1px solid var(--ink);
+  padding-top: 14px;
+  font-size: 10px;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
   color: var(--quiet);
-  margin-top: 7px;
+}
+.atlas-position {
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.atlas-current {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 28px;
+  min-height: 110px;
+}
+.atlas-current-label {
+  font-size: 10px;
+  color: var(--quiet);
+}
+.atlas-current strong {
+  font: 36px/1.08 var(--serif);
+  letter-spacing: -1px;
+  color: var(--accent);
+}
+.atlas-current > span:last-child {
+  color: var(--quiet);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.atlas-map summary {
+  display: none;
 }
 .journey-map {
   display: block;
   width: 100%;
   height: auto;
-  margin: 20px 0 0;
+  max-height: 340px;
+  margin: 18px auto 0;
 }
 .map-land {
-  fill: var(--bg);
+  fill: var(--hover);
   stroke: var(--line);
-  stroke-width: 0.65;
+  stroke-width: 0.8;
   stroke-linejoin: round;
 }
 .map-region {
@@ -602,329 +732,184 @@ footer a {
   stroke: var(--accent);
   stroke-width: 1;
   stroke-dasharray: 3 5;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 .map-city {
   fill: var(--accent);
+  transition: opacity 0.25s;
 }
 .map-city text {
   font: 15px var(--sans);
   fill: var(--ink);
   paint-order: stroke;
-  stroke: var(--hover);
+  stroke: var(--bg);
   stroke-width: 4px;
   stroke-linejoin: round;
 }
 .city-halo {
   opacity: 0.12;
 }
-.journey-enhanced .map-city {
-  opacity: 0.28;
-  transition: opacity 0.25s;
-}
-.journey-enhanced .map-city.is-active {
-  opacity: 1;
-}
-.journey-enhanced .map-city.is-active .city-halo {
-  opacity: 0.22;
-  r: 18px;
-}
-.journey-enhanced .map-city.is-active text {
-  font-size: 18px;
-  font-weight: 700;
-  fill: var(--accent);
-}
-.atlas-note {
-  font: 11px/1.7 var(--sans);
-  color: var(--quiet);
-  margin: 5px 0 20px;
-}
-
-.journey-timeline {
-  border-left: 1px solid var(--line);
-  padding-left: 36px;
-  min-width: 0;
-}
-.journey-chapter {
-  font-size: 10px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin: 0 0 30px;
-  padding-top: 4px;
-  position: relative;
-}
-.journey-chapter::before {
-  content: "";
-  position: absolute;
-  width: 9px;
-  height: 9px;
-  background: var(--bg);
-  border: 1px solid var(--accent);
-  border-radius: 50%;
-  left: -42px;
-  top: 5px;
-}
-.journey-stop {
-  padding: 0 0 38px;
-  margin: 0 0 34px;
-  border-bottom: 1px solid var(--line);
-  scroll-margin-top: 40px;
-  position: relative;
-}
-.stop-meta {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 15px;
-  margin-bottom: 16px;
-  font-size: 12px;
-  line-height: 1.6;
-}
-.stop-date {
-  color: var(--quiet);
-  font-variant-numeric: tabular-nums;
-}
-.stop-city {
-  color: var(--accent);
-  text-align: right;
-}
-.journey-stop h3 {
-  font: 400 clamp(34px, 3.2vw, 44px)/1.15 var(--serif);
-  letter-spacing: -1px;
-  margin-bottom: 9px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 14px;
-}
-.stop-role {
-  font-size: 13px;
-  color: var(--quiet);
-  margin-bottom: 25px;
-}
-.journey-stop h4 {
-  font: 400 23px/1.3 var(--serif);
-  letter-spacing: -0.3px;
-  margin: 0 0 12px;
-}
-.stop-description {
-  font-size: 15px;
-  line-height: 1.85;
-  color: var(--quiet);
-  margin-bottom: 20px;
-  max-width: 560px;
-}
-.stop-description a {
-  color: var(--accent);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.stop-proof {
-  font-size: 11px;
-  line-height: 1.6;
-  margin: 0;
-  color: var(--accent);
-  padding-left: 12px;
-  border-left: 2px solid var(--line);
-}
-.today-tag {
-  font: 10px var(--sans);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border: 1px solid var(--accent);
-  color: var(--accent);
-  border-radius: 20px;
-  padding: 6px 10px;
-}
-.journey-current {
-  border-bottom: 2px solid var(--accent);
-  padding-bottom: 30px;
-  margin-bottom: 0;
-}
-.journey-current .text-link {
-  display: inline-block;
-  margin-top: 18px;
-  color: var(--accent);
-}
-.journey-footnote {
-  font-size: 11px;
-  color: var(--quiet);
-  line-height: 1.8;
-  margin: 24px 0 0;
-  text-align: right;
-}
-@media (max-width: 1000px) {
-  .journey-layout {
-    gap: 5%;
-    grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1.2fr);
-  }
-  .atlas-inner {
-    padding: 20px 15px;
-    top: 18px;
-  }
-  .atlas-title {
-    font-size: 20px;
-  }
-  .journey-timeline {
-    padding-left: 26px;
-  }
-  .journey-chapter::before {
-    left: -32px;
-  }
-  .stop-meta {
-    font-size: 11px;
-  }
-  .stop-description {
-    font-size: 14px;
-  }
-  .journey-stop h3 {
-    font-size: 36px;
-  }
-  .journey-stop h4 {
-    font-size: 22px;
-  }
-}
-@media (max-width: 760px) {
-  .career {
-    padding: 65px 6%;
-  }
-  .career-heading {
-    margin-bottom: 35px;
-  }
-  .career-heading h2 {
-    font-size: 43px;
-  }
-  .career-heading > p:last-child {
-    font-size: 14px;
-  }
-  .journey-layout {
-    grid-template-columns: 1fr;
-    gap: 38px;
-  }
-  .atlas-inner {
-    position: static;
-    padding: 22px;
-  }
-  .journey-map {
-    max-width: 420px;
-    margin: 10px auto;
-  }
-  .atlas-title {
-    font-size: 23px;
-  }
-
-  .atlas-note {
-    margin-bottom: 16px;
-    font-size: 12px;
-  }
-  .journey-timeline {
-    padding-left: 25px;
-    margin-left: 5px;
-  }
-  .journey-chapter {
-    font-size: 9px;
-    letter-spacing: 1px;
-    margin-bottom: 27px;
-  }
-  .journey-chapter::before {
-    left: -31px;
-  }
-  .journey-stop {
-    margin-bottom: 30px;
-    padding-bottom: 30px;
-    scroll-margin-top: 25px;
-  }
-  .journey-stop h3 {
-    font-size: 38px;
-  }
-  .stop-meta {
-    font-size: 12px;
-    margin-bottom: 13px;
-    gap: 10px;
-  }
-  .stop-role {
-    font-size: 13px;
-    margin-bottom: 21px;
-  }
-  .stop-description {
-    font-size: 15px;
-  }
-  .journey-footnote {
-    text-align: left;
-  }
-  .journey-current {
-    margin-bottom: 0;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .journey-enhanced .map-city {
-    transition: none;
-  }
-}
-
 .city-ring {
   fill: none;
   stroke: var(--accent);
   stroke-width: 1.5;
   opacity: 0;
 }
-.journey-enhanced .map-city.is-active .city-ring {
+.journey-enhanced .map-city {
+  opacity: 0.36;
+}
+.journey-enhanced .map-city.is-active {
   opacity: 1;
 }
-.journey-enhanced .map-city.is-active > circle:not(.city-halo):not(.city-ring) {
-  r: 5.5px;
+.journey-enhanced .is-active .city-halo {
+  opacity: 0.18;
+  r: 21px;
+}
+.journey-enhanced .is-active .city-ring {
+  opacity: 1;
+}
+.journey-enhanced .is-active > circle:not(.city-halo):not(.city-ring) {
+  r: 6px;
   stroke: var(--bg);
   stroke-width: 2;
 }
-.atlas-current {
-  border-top: 1px solid var(--line);
-  padding-top: 20px;
+.journey-enhanced .is-active text {
+  font-size: 18px;
+  font-weight: 600;
+  fill: var(--accent);
+}
+.atlas-note {
+  font-size: 11px;
+  color: var(--quiet);
+  line-height: 1.7;
+  margin: 6px 0 24px;
+}
+.atlas-progress {
+  height: 2px;
+  background: var(--line);
+}
+.atlas-progress span {
+  display: block;
+  height: 100%;
+  width: var(--career-progress, 12.5%);
+  background: var(--accent);
+  transition: width 0.3s;
+}
+.atlas-next {
   display: flex;
-  flex-direction: column;
-  gap: 9px;
-  min-height: 112px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  gap: 12px;
 }
-.atlas-current-label {
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 1.6px;
+.atlas-next > span {
+  font-size: 10px;
   color: var(--quiet);
 }
-.atlas-current strong {
-  font: 400 clamp(23px, 2.3vw, 32px)/1.2 var(--serif);
-  color: var(--accent);
-  letter-spacing: -0.5px;
-}
-.atlas-current > span:last-child {
+.atlas-next strong {
+  display: flex;
+  gap: 18px;
   font-size: 12px;
-  color: var(--quiet);
+  font-weight: 500;
+}
+.atlas-next[hidden] {
+  display: none;
+}
+.career-chapter {
+  scroll-margin-top: 36px;
+  margin-bottom: 64px;
+}
+.chapter-heading {
+  border-top: 1px solid var(--ink);
+  padding-top: 17px;
+  margin-bottom: 28px;
+}
+.chapter-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 11px;
   line-height: 1.6;
+  color: var(--quiet);
+  margin-bottom: 24px;
+}
+.chapter-meta > span:first-child {
+  color: var(--accent);
+  white-space: nowrap;
+}
+.chapter-heading h3 {
+  font: 400 clamp(30px, 3.3vw, 46px)/1.09 var(--serif);
+  letter-spacing: -1.1px;
+  margin-bottom: 17px;
+  max-width: 500px;
+}
+.chapter-intro {
+  font-size: 15px;
+  color: var(--quiet);
+  line-height: 1.75;
+  max-width: 540px;
+  margin-bottom: 0;
+}
+.chapter-experiences {
+  position: relative;
+  display: grid;
+  gap: 18px;
+  padding-left: 24px;
+}
+.chapter-experiences::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  bottom: 30px;
+  width: 1px;
+  left: 0;
+  background: var(--line);
 }
 .journey-stop {
-  border: 0;
-  padding: 0;
-  margin-bottom: 24px;
-  isolation: isolate;
+  position: relative;
+  min-width: 0;
+  scroll-margin-top: 50px;
+}
+.journey-stop::before {
+  content: "";
+  position: absolute;
+  left: -27px;
+  top: 29px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--line);
+  border: 1px solid var(--bg);
+  box-shadow: 0 0 0 5px var(--bg);
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
+}
+.journey-stop.is-reading::before {
+  background: var(--accent);
+  box-shadow:
+    0 0 0 5px var(--bg),
+    0 0 0 6px var(--accent);
 }
 .career-card {
   position: relative;
   background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: 14px;
-  box-shadow:
-    0 4px 7px #302b2605,
-    0 12px 32px #302b2609;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px #302b2604;
   transition:
-    transform 0.2s,
+    border-color 0.2s,
     box-shadow 0.2s,
-    border-color 0.2s;
+    transform 0.2s;
+}
+.journey-stop.is-reading .career-card {
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
+  box-shadow: 0 6px 20px #302b2609;
 }
 .career-card summary {
-  padding: 25px 28px 20px;
   list-style: none;
+  padding: 24px 28px 18px;
   cursor: pointer;
-  border-radius: 14px;
 }
 .career-card summary::-webkit-details-marker {
   display: none;
@@ -932,38 +917,69 @@ footer a {
 .career-card summary:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 5px;
+  border-radius: 4px;
 }
-.journey-stop h3 {
-  font-size: clamp(31px, 2.8vw, 40px);
-}
-.career-card .stop-role {
-  margin-bottom: 0;
+.stop-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--quiet);
+  font-size: 11px;
   line-height: 1.6;
+  margin-bottom: 16px;
+}
+.stop-date {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.stop-city {
+  text-align: right;
+}
+.journey-stop h4 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  font: 500 29px/1.15 var(--sans);
+  letter-spacing: -0.8px;
+  margin: 0 0 7px;
+}
+.stop-role {
+  font: 21px/1.35 var(--serif);
+  margin-bottom: 20px;
+}
+.stop-takeaway {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--quiet);
+  margin-bottom: 20px;
+  max-width: 510px;
 }
 .card-disclosure {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  align-items: center;
   border-top: 1px solid var(--line);
-  margin-top: 20px;
-  padding-top: 14px;
+  padding-top: 13px;
+  color: var(--accent);
   font-size: 11px;
-  color: var(--quiet);
 }
 .card-plus {
-  font: 24px/1 var(--serif);
-  color: var(--accent);
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  font: 20px var(--sans);
+  border: 1px solid var(--line);
+  border-radius: 50%;
   transition: transform 0.2s;
 }
-.card-hide {
+.card-hide,
+.career-card[open] .card-show {
   display: none;
 }
 .career-card[open] .card-hide {
   display: inline;
-}
-.career-card[open] .card-show {
-  display: none;
 }
 .career-card[open] .card-plus {
   transform: rotate(45deg);
@@ -971,522 +987,352 @@ footer a {
 .card-story {
   padding: 0 28px 26px;
 }
-.journey-stop .card-story h4 {
-  padding-top: 5px;
+.stop-description {
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 17px;
+  max-width: 540px;
 }
-.career-card[open] {
-  border-color: var(--accent);
-  box-shadow:
-    0 7px 16px #302b2609,
-    0 20px 45px #302b2612;
+.stop-description a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.stop-proof {
+  font-size: 10px;
+  color: var(--accent);
+  letter-spacing: 0.4px;
+  margin-bottom: 0;
+  line-height: 1.7;
+}
+.card-story .text-link {
+  display: inline-block;
+  font-size: 12px;
+  margin-top: 18px;
+}
+.today-tag {
+  font: 10px var(--sans);
+  letter-spacing: 0.2px;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 5px 8px;
+  border-radius: 3px;
 }
 .journey-current .career-card {
-  border-color: var(--accent);
+  background: color-mix(in srgb, var(--panel) 90%, var(--accent));
 }
-.journey-chapter:not(:first-child) {
-  margin-top: 38px;
+.journey-end {
+  display: flex;
+  align-items: center;
+  font: italic 24px var(--serif);
+  color: var(--accent);
+  padding-left: 24px;
 }
-.journey-stop.is-reading .career-card {
-  border-color: var(--accent);
+.journey-end .status {
+  margin-right: 15px;
 }
-@media (hover: hover) and (pointer: fine) and (min-width: 761px) {
+.journey-footnote {
+  margin: 42px 0 0;
+  font-size: 11px;
+  color: var(--quiet);
+  line-height: 1.7;
+}
+@media (hover: hover) and (pointer: fine) {
   .career-card:hover {
     transform: translateY(-3px);
-  }
-  .journey-stop:has(.career-card[open]) {
-    z-index: 5;
-  }
-  .career-card[open] {
-    border-radius: 14px 14px 0 0;
-  }
-  .career-card[open] summary {
-    border-radius: 14px 14px 0 0;
-  }
-  .card-story {
-    position: absolute;
-    left: -1px;
-    right: -1px;
-    top: 100%;
-    background: var(--panel);
-    border: 1px solid var(--accent);
-    border-top: 0;
-    border-radius: 0 0 14px 14px;
-    box-shadow: 0 24px 35px #302b261a;
-    padding-top: 6px;
-  }
-  .card-story::before {
-    content: "";
-    display: block;
-    border-top: 1px solid var(--line);
-    margin-bottom: 18px;
-  }
-  .card-story {
-    animation: card-reveal 0.18s ease-out;
+    border-color: var(--accent);
+    box-shadow: 0 12px 24px #302b2610;
   }
 }
-@keyframes card-reveal {
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
+@media (min-width: 901px) and (max-height: 780px) {
+  .atlas-current {
+    margin-top: 20px;
+    min-height: 90px;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .atlas-current strong {
+    font-size: 30px;
+  }
+  .journey-map {
+    max-height: 260px;
+    margin-top: 10px;
+  }
+  .atlas-note {
+    margin-bottom: 15px;
   }
 }
-@media (max-width: 760px) {
-  .career-card summary {
-    padding: 22px 20px 18px;
-  }
-  .card-story {
-    padding: 0 20px 23px;
-  }
-  .journey-stop h3 {
-    font-size: 34px;
-  }
-  .stop-meta {
-    flex-wrap: wrap;
-    gap: 6px 16px;
-  }
-  .card-disclosure {
-    font-size: 11px;
-    margin-top: 17px;
-  }
-  .journey-stop {
-    padding: 0;
-    margin-bottom: 20px;
-  }
-  .journey-current {
-    margin-bottom: 0;
+@media (max-width: 1100px) {
+  .career {
+    padding-inline: 6%;
   }
   .journey-layout {
-    gap: 32px;
+    gap: 5%;
+    grid-template-columns: minmax(230px, 0.75fr) minmax(0, 1.55fr);
   }
-  .journey-timeline {
-    padding-left: 20px;
-    margin-left: 0;
-  }
-  .journey-chapter::before {
-    left: -26px;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .career-card,
-  .card-plus {
-    transition: none;
-  }
-  .card-story {
-    animation: none;
-  }
-}
-.career-card summary {
-  -webkit-tap-highlight-color: transparent;
-}
-/* Archival cards: a paper edge and a closer company/role hierarchy. */
-.career-card {
-  border-radius: 3px 14px 3px 3px;
-  box-shadow:
-    3px 4px 0 var(--bg),
-    4px 5px 0 var(--line),
-    0 12px 28px #302b260a;
-  border-left: 3px solid var(--line);
-  transition:
-    transform 0.22s,
-    box-shadow 0.22s,
-    border-color 0.22s;
-}
-.career-card summary {
-  position: relative;
-  padding: 25px 30px 18px;
-  border-radius: 2px 13px 2px 2px;
-  background: linear-gradient(
-    115deg,
-    transparent 65%,
-    color-mix(in srgb, var(--accent) 3%, transparent)
-  );
-}
-.career-card summary::before {
-  content: "";
-  position: absolute;
-  left: -3px;
-  top: 26px;
-  width: 3px;
-  height: 35px;
-  background: var(--accent);
-  transition: height 0.22s;
-}
-.career-card .stop-meta {
-  font-size: 12px;
-  margin-bottom: 22px;
-  gap: 12px;
-  align-items: center;
-}
-.career-card .stop-city {
-  padding: 4px 9px;
-  border: 1px solid var(--line);
-  border-radius: 3px;
-  font-size: 11px;
-  line-height: 1.4;
-  color: var(--quiet);
-}
-.journey-stop .career-card h3 {
-  font-size: 30px;
-  line-height: 1.2;
-  letter-spacing: -0.65px;
-  margin-bottom: 8px;
-}
-.career-card .stop-role {
-  font: 400 19px/1.45 var(--sans);
-  color: var(--ink);
-  letter-spacing: -0.3px;
-}
-.card-disclosure {
-  margin-top: 24px;
-  padding-top: 12px;
-  border-top-style: dashed;
-  color: var(--quiet);
-  font-size: 10px;
-  letter-spacing: 0.3px;
-}
-.card-plus {
-  width: 26px;
-  height: 26px;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font: 21px/1 var(--serif);
-}
-.career-card[open],
-.journey-stop.is-reading .career-card {
-  border-left-color: var(--accent);
-}
-.career-card[open] {
-  box-shadow:
-    3px 4px 0 var(--bg),
-    4px 5px 0 var(--line),
-    0 18px 38px #302b2610;
-}
-.career-card[open] summary::before {
-  height: 70px;
-}
-.career-card[open] .stop-city {
-  color: var(--accent);
-  border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
-}
-.journey-stop .card-story h4 {
-  font: 400 22px/1.35 var(--serif);
-  letter-spacing: -0.2px;
-}
-.card-story {
-  padding-left: 30px;
-  padding-right: 30px;
-}
-@media (hover: hover) and (pointer: fine) and (min-width: 761px) {
-  .career-card:hover {
-    transform: translate(-2px, -3px);
-    box-shadow:
-      5px 7px 0 var(--bg),
-      6px 8px 0 var(--line),
-      0 20px 35px #302b2610;
-  }
-  .career-card[open] {
-    border-radius: 3px 14px 0 0;
-  }
-  .career-card[open] summary {
-    border-radius: 2px 13px 0 0;
-  }
-  .card-story {
-    left: -3px;
-    border-left-width: 3px;
-    border-radius: 0 0 3px 3px;
-  }
-  .card-story::before {
-    border-top-style: dashed;
-  }
-}
-@media (max-width: 760px) {
   .career-card summary {
-    padding: 23px 22px 17px;
-  }
-  .journey-stop .career-card h3 {
-    font-size: 29px;
-  }
-  .career-card .stop-role {
-    font-size: 18px;
-    line-height: 1.5;
-  }
-  .career-card .stop-meta {
-    margin-bottom: 20px;
-    font-size: 11px;
-  }
-  .career-card .stop-city {
-    font-size: 10px;
-    padding: 4px 7px;
+    padding-inline: 22px;
   }
   .card-story {
-    padding-left: 22px;
-    padding-right: 22px;
+    padding-inline: 22px;
   }
-  .card-disclosure {
-    margin-top: 21px;
-  }
-  .journey-stop .card-story h4 {
-    font-size: 21px;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .career-card,
-  .career-card summary::before {
-    transition: none;
-  }
-}
-.deck-heading,
-.deck-controls {
-  display: none;
-}
-@media (min-width: 1000px) {
-  .deck-mode .journey-layout {
-    align-items: start;
-    gap: 7%;
-    grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.3fr);
-  }
-  .deck-mode .journey-timeline {
-    height: calc(8 * 48vh + 700px);
-    padding: 0;
-    border: 0;
-    position: relative;
-  }
-  .deck-mode .deck-stage {
-    position: sticky;
-    top: 30px;
-    height: 700px;
-    max-height: calc(100svh - 60px);
-    perspective: 1400px;
-  }
-  .deck-mode .deck-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--line);
-    padding: 0 0 20px;
-    margin-bottom: 55px;
-    gap: 15px;
-    color: var(--accent);
-    font-size: 11px;
-    letter-spacing: 1px;
-  }
-  .deck-mode .deck-count {
-    font-variant-numeric: tabular-nums;
-    color: var(--quiet);
-    letter-spacing: 2px;
-  }
-  .deck-mode .journey-chapter {
-    display: none;
-  }
-  .deck-mode .journey-stop {
-    position: absolute;
-    top: 82px;
-    left: 8px;
-    right: 8px;
-    margin: 0;
-    padding: 0;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(75px) scale(0.94);
-    transition:
-      transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-      opacity 0.35s,
-      visibility 0.35s;
-    isolation: auto;
-    scroll-margin-top: 0;
-  }
-  .deck-mode .journey-stop.is-reading {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scale(1);
-  }
-  .deck-mode .journey-stop.is-stacked {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(calc(-15px * var(--deck-depth)))
-      translateX(calc(4px * var(--deck-depth))) rotate(var(--deck-angle))
-      scale(calc(1 - var(--deck-depth) * 0.025));
-    pointer-events: none;
-  }
-  .deck-mode .journey-stop.is-stacked .career-card {
-    background: var(--hover);
-    box-shadow: 0 8px 20px #302b2610;
-  }
-  .deck-mode .journey-stop.is-stacked summary {
-    opacity: 0.12;
-  }
-  .deck-mode .career-card {
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    background: var(--panel);
-    box-shadow:
-      0 2px 3px #302b2606,
-      0 20px 50px #302b2618;
-    transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
-    transition:
-      transform 0.3s ease-out,
-      box-shadow 0.3s,
-      border-color 0.3s;
-    transform-style: preserve-3d;
-  }
-  .deck-mode .career-card summary {
-    padding: 32px 34px 22px;
-    border-radius: 14px;
-    background: radial-gradient(
-      ellipse at top right,
-      color-mix(in srgb, var(--accent) 7%, transparent),
-      transparent 70%
-    );
-  }
-  .deck-mode .career-card summary::before {
-    display: none;
-  }
-  .deck-mode .career-card .stop-meta {
-    margin-bottom: 40px;
-  }
-  .deck-mode .career-card h3 {
-    font-size: clamp(30px, 2.9vw, 42px);
-    margin-bottom: 13px;
-    letter-spacing: -1px;
-  }
-  .deck-mode .career-card .stop-role {
-    font: 400 23px/1.4 var(--serif);
-    color: var(--quiet);
-    letter-spacing: -0.2px;
-  }
-  .deck-mode .career-card .stop-city {
-    border-radius: 20px;
-    padding: 6px 11px;
-    font-size: 11px;
-  }
-  .deck-mode .card-disclosure {
-    margin-top: 38px;
-    padding-top: 18px;
-    border-top-style: solid;
-    font-size: 11px;
-  }
-  .deck-mode .card-plus {
-    width: 32px;
-    height: 32px;
+  .career-overview strong {
     font-size: 23px;
   }
-  .deck-mode .career-card[open] {
-    border-radius: 14px;
-    border-color: var(--accent);
-  }
-  .deck-mode .career-card[open] summary {
-    border-radius: 14px 14px 0 0;
-  }
-  .deck-mode .card-story {
-    position: static;
-    background: transparent;
-    border: 0;
-    padding: 0 34px 28px;
-    border-radius: 0 0 14px 14px;
-    box-shadow: none;
-    max-height: 240px;
-    overflow: auto;
-    animation: card-reveal 0.2s;
-  }
-  .deck-mode .card-story::before {
-    margin-bottom: 19px;
-    border-top-style: solid;
-  }
-  .deck-mode .stop-description {
-    font-size: 14px;
-    line-height: 1.75;
-  }
-  .deck-mode .card-story h4 {
-    font-size: 22px;
-  }
-  .deck-mode .deck-controls {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 0 4px;
-    border-top: 1px solid var(--line);
-    background: linear-gradient(var(--accent), var(--accent)) left top /
-      var(--deck-progress, 12.5%) 1px no-repeat;
-  }
-  .deck-mode .deck-controls button {
-    font: 24px var(--serif);
-    color: var(--ink);
-    width: 44px;
-    height: 44px;
-    border: 1px solid var(--line);
-    border-radius: 50%;
-    background: transparent;
-    cursor: pointer;
-  }
-  .deck-mode .deck-controls button:hover {
-    background: var(--hover);
-    color: var(--accent);
-  }
-  .deck-mode .deck-controls button:disabled {
-    opacity: 0.3;
-    cursor: default;
-  }
-  .deck-mode .deck-controls button:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 4px;
-  }
-  .deck-mode .deck-position {
-    font: italic 21px var(--serif);
-    color: var(--accent);
-  }
-  .deck-mode .journey-footnote {
-    margin-top: 45px;
+  .overview-companies {
+    font-size: 12px;
   }
 }
-@media (min-width: 1000px) and (max-height: 850px) {
-  .deck-mode .deck-stage {
-    height: 650px;
+@media (max-width: 900px) {
+  .career {
+    padding-top: 72px;
   }
-  .deck-mode .career-card summary {
-    padding: 23px 28px 18px;
+  .career-heading-grid {
+    gap: 8%;
   }
-  .deck-mode .career-card .stop-meta {
-    margin-bottom: 25px;
+  .career-introduction > p:first-child {
+    font-size: 21px;
   }
-  .deck-mode .card-disclosure {
-    margin-top: 23px;
-    padding-top: 12px;
+  .career-overview {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 0;
+    margin-bottom: 48px;
+    border-bottom: 0;
   }
-  .deck-mode .card-story {
-    max-height: 190px;
-    padding-inline: 28px;
+  .career-overview a {
+    border-bottom: 1px solid var(--line);
+    padding: 22px !important;
   }
-  .deck-mode .deck-heading {
-    padding-bottom: 14px;
+  .career-overview a:nth-child(odd) {
+    border-left: 0;
+    padding-left: 0 !important;
   }
-  .deck-mode .journey-stop {
-    top: 68px;
+  .career-overview a:nth-child(odd)::before {
+    left: 0;
+  }
+  .overview-date {
+    margin-bottom: 16px;
+  }
+  .journey-layout {
+    display: block;
+  }
+  .journey-atlas {
+    position: sticky;
+    top: 10px;
+    z-index: 5;
+    margin-bottom: 32px;
+  }
+  .atlas-inner {
+    position: relative;
+    top: auto;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--bg);
+    box-shadow: 0 6px 20px #302b2610;
+    padding: 15px 18px 0;
+  }
+  .atlas-topline,
+  .atlas-current-label,
+  .atlas-note,
+  .atlas-next {
+    display: none;
+  }
+  .atlas-current {
+    margin: 0 75px 14px 0;
+    gap: 5px;
+    min-height: 0;
+  }
+  .atlas-current strong {
+    font-size: 22px;
+    letter-spacing: -0.5px;
+  }
+  .atlas-current > span:last-child {
+    font-size: 11px;
+  }
+  .atlas-map summary {
+    display: block;
+    position: absolute;
+    right: 18px;
+    top: 19px;
+    font-size: 12px;
+    color: var(--accent);
+    cursor: pointer;
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    list-style: none;
+  }
+  .atlas-map summary::-webkit-details-marker {
+    display: none;
+  }
+  .atlas-map summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+  .atlas-map[open] summary {
+    background: var(--hover);
+  }
+  .journey-map {
+    margin: 0 auto 18px;
+    max-height: min(340px, 44vh);
+  }
+  .atlas-progress {
+    margin-inline: -18px;
+  }
+  .career-chapter {
+    scroll-margin-top: 126px;
+    margin-bottom: 56px;
+  }
+  .journey-stop {
+    scroll-margin-top: 126px;
+  }
+  .chapter-heading h3 {
+    font-size: 38px;
+  }
+  .chapter-intro {
+    max-width: 560px;
+  }
+  .career-overview strong {
+    font-size: 26px;
+  }
+}
+@media (max-width: 580px) {
+  .career {
+    padding: 64px 6% 48px;
+  }
+  .career-heading-grid {
+    display: block;
+  }
+  .career-heading h2 {
+    font-size: 54px;
+    letter-spacing: -2px;
+    margin-bottom: 30px;
+  }
+  .career-heading {
+    margin-bottom: 36px;
+  }
+  .career-introduction {
+    max-width: none;
+  }
+  .career-introduction > p:first-child {
+    font-size: 22px;
+  }
+  .career-introduction > p:nth-child(2) {
+    font-size: 13px;
+  }
+  .career-start {
+    margin-top: 0;
+  }
+  .career-overview a {
+    padding: 20px 12px !important;
+  }
+  .career-overview strong {
+    font-size: 22px;
+  }
+  .overview-companies {
+    font-size: 12px;
+  }
+  .overview-place {
+    font-size: 10px;
+  }
+  .overview-date {
+    font-size: 10px;
+  }
+  .chapter-meta {
+    font-size: 10px;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .chapter-meta > span:last-child {
+    text-align: right;
+  }
+  .chapter-heading h3 {
+    font-size: 33px;
+  }
+  .chapter-intro {
+    font-size: 14px;
+  }
+  .chapter-experiences {
+    padding-left: 17px;
+  }
+  .journey-stop::before {
+    left: -20px;
+  }
+  .career-card summary {
+    padding: 20px 19px 15px;
+  }
+  .journey-stop h4 {
+    font-size: 26px;
+  }
+  .stop-role {
+    font-size: 19px;
+    margin-bottom: 17px;
+  }
+  .stop-meta {
+    font-size: 10px;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  .stop-takeaway {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+  .card-story {
+    padding: 0 19px 22px;
+  }
+  .stop-description {
+    font-size: 13px;
+  }
+  .journey-end {
+    padding-left: 17px;
+    font-size: 22px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .deck-mode .journey-stop,
-  .deck-mode .career-card {
-    transition: none;
-  }
-  .deck-mode .career-card {
+  .career-card:hover {
     transform: none;
   }
-  .deck-mode .card-story {
-    animation: none;
+}
+@media print {
+  .journey-layout {
+    display: block;
+  }
+  .journey-atlas,
+  .career-overview,
+  .card-disclosure {
+    display: none;
+  }
+  .career-chapter,
+  .journey-stop {
+    break-inside: avoid;
   }
 }
-@media (min-width: 1000px) {
-  .deck-mode .journey-atlas {
-    align-self: stretch;
+
+html:not(.journey-enhanced) .atlas-current,
+html:not(.journey-enhanced) .atlas-position,
+html:not(.journey-enhanced) .atlas-progress,
+html:not(.journey-enhanced) .atlas-next {
+  display: none;
+}
+@media (max-width: 900px) {
+  html:not(.journey-enhanced) .journey-atlas {
+    position: static;
   }
+}
+@media (min-width: 901px) and (max-height: 600px) {
+  .atlas-inner {
+    top: 12px;
+  }
+  .journey-map {
+    max-height: 175px;
+  }
+  .atlas-current {
+    margin-top: 16px;
+    min-height: 80px;
+  }
+}
+
+.atlas-map summary span {
+  display: inline-block;
+  transition: transform 0.2s;
+}
+.atlas-map[open] summary span {
+  transform: rotate(45deg);
 }

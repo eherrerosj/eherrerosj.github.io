@@ -3,142 +3,104 @@
   const cities = [...document.querySelectorAll(".map-city")];
   const cityLabel = document.querySelector("#atlas-city");
   const companyLabel = document.querySelector("#atlas-company");
-  const timeline = document.querySelector(".journey-timeline");
-  const stage = document.querySelector(".deck-stage");
-  if (!stops.length || !cityLabel || !companyLabel || !stage) return;
-  const desktop = matchMedia(
-    "(min-width: 1000px) and (hover: hover) and (pointer: fine)",
+  const atlas = document.querySelector(".atlas-inner");
+  const map = document.querySelector(".atlas-map");
+  const position = document.querySelector(".atlas-position");
+  const next = document.querySelector(".atlas-next");
+  if (!stops.length || !atlas || !map) return;
+
+  const mobile = matchMedia("(max-width: 900px)");
+  const hover = matchMedia("(hover: hover) and (pointer: fine)");
+  const names = stops.map((stop) =>
+    stop.querySelector("h4").firstChild.textContent.trim(),
   );
-  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
-  const chapter = document.querySelector(".deck-chapter");
-  const count = document.querySelector(".deck-count");
-  const previous = document.querySelector(".deck-previous");
-  const next = document.querySelector(".deck-next");
-  const position = document.querySelector(".deck-position");
-  const chapterNames = [
-    "Before the boom",
-    "Before the boom",
-    "Building companies",
-    "Building companies",
-    "A wider world",
-    "Useful to more people",
-    "Useful to more people",
-    "Useful to more people",
-  ];
-  document.documentElement.classList.add("journey-enhanced");
   let current = -1;
   let scheduled = false;
-  let pointerCard;
+  document.documentElement.classList.add("journey-enhanced");
+
   function activate(index) {
     if (index === current) return;
     current = index;
     const stop = stops[index];
-    stops.forEach((item, i) => {
-      const distance = index - i;
-      item.classList.toggle("is-reading", i === index);
-      item.style.setProperty(
-        "--deck-depth",
-        Math.max(0, Math.min(3, distance)),
-      );
-      item.style.setProperty(
-        "--deck-angle",
-        distance === 1 ? "-3deg" : distance === 2 ? "3deg" : "0deg",
-      );
-      item.style.zIndex =
-        i === index ? 10 : String(Math.max(0, 5 - Math.abs(distance)));
-      if (desktop.matches) {
-        item.inert = i !== index;
-        item.classList.toggle("is-stacked", distance > 0 && distance < 3);
-        if (i !== index) item.querySelector("details").open = false;
-      } else {
-        item.inert = false;
-        item.classList.remove("is-stacked");
-      }
-    });
+    stops.forEach((item, i) =>
+      item.classList.toggle("is-reading", i === index),
+    );
     const places = stop.dataset.places.split(" ");
     cities.forEach((city) =>
       city.classList.toggle("is-active", places.includes(city.dataset.city)),
     );
     cityLabel.textContent = stop.querySelector(".stop-city").textContent;
-    companyLabel.textContent = `${stop.querySelector("h3").firstChild.textContent.trim()} · ${stop.querySelector(".stop-date").textContent}`;
-    chapter.textContent = chapterNames[index];
-    count.textContent = `${String(index + 1).padStart(2, "0")} / 08`;
-    position.textContent = stop.querySelector(".stop-date").textContent;
-    previous.disabled = index === 0;
-    next.disabled = index === stops.length - 1;
-    timeline.style.setProperty(
-      "--deck-progress",
+    companyLabel.textContent = `${names[index]} · ${stop.querySelector(".stop-date").textContent}`;
+    position.textContent = `${String(index + 1).padStart(2, "0")} / ${String(stops.length).padStart(2, "0")}`;
+    position.setAttribute(
+      "aria-label",
+      `Experience ${index + 1} of ${stops.length}`,
+    );
+    atlas.style.setProperty(
+      "--career-progress",
       `${((index + 1) / stops.length) * 100}%`,
     );
+    next.hidden = index === stops.length - 1;
+    if (!next.hidden) {
+      next.href = `#${stops[index + 1].id}`;
+      next
+        .querySelector("strong")
+        .replaceChildren(document.createTextNode(`${names[index + 1]} `));
+      const arrow = document.createElement("span");
+      arrow.setAttribute("aria-hidden", "true");
+      arrow.textContent = "↓";
+      next.querySelector("strong").append(arrow);
+    }
+    document.querySelectorAll(".career-overview a").forEach((link) => {
+      if (link.hash === `#${stop.closest(".career-chapter").id}`)
+        link.setAttribute("aria-current", "step");
+      else link.removeAttribute("aria-current");
+    });
   }
+
   function update() {
     scheduled = false;
-    if (desktop.matches) {
-      const travel = timeline.offsetHeight - stage.offsetHeight;
-      const progress = Math.max(
-        0,
-        Math.min(1, (30 - timeline.getBoundingClientRect().top) / travel),
-      );
-      activate(Math.min(stops.length - 1, Math.floor(progress * stops.length)));
-    } else {
-      let index = 0;
-      stops.forEach((stop, i) => {
-        if (stop.getBoundingClientRect().top <= innerHeight * 0.3) index = i;
-      });
-      activate(index);
-    }
+    const readingLine = mobile.matches ? 180 : Math.min(220, innerHeight * 0.3);
+    let index = 0;
+    stops.forEach((stop, i) => {
+      const marker = stop.previousElementSibling
+        ? stop
+        : stop.closest(".career-chapter");
+      if (marker.getBoundingClientRect().top <= readingLine) index = i;
+    });
+    activate(index);
   }
+
   function schedule() {
     if (!scheduled) {
       scheduled = true;
       requestAnimationFrame(update);
     }
   }
-  function setMode() {
-    document.documentElement.classList.toggle("deck-mode", desktop.matches);
-    stops.forEach((stop) => {
-      stop.inert = false;
-      stop.style.zIndex = "";
-    });
-    current = -1;
-    update();
-  }
-  function go(index) {
-    const travel = timeline.offsetHeight - stage.offsetHeight;
-    const y =
-      scrollY +
-      timeline.getBoundingClientRect().top -
-      30 +
-      ((index + 0.25) / stops.length) * travel;
-    window.scrollTo({
-      top: y,
-      behavior: reduced.matches ? "instant" : "smooth",
-    });
-  }
-  previous.addEventListener("click", () => go(Math.max(0, current - 1)));
-  next.addEventListener("click", () =>
-    go(Math.min(stops.length - 1, current + 1)),
-  );
+
   stops.forEach((stop, index) => {
     const card = stop.querySelector("details");
     const summary = card.querySelector("summary");
+    const disclosure = card.querySelector(".card-disclosure");
     let preview = false;
-    stop.addEventListener("pointerenter", () => {
-      if (!matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-      if (desktop.matches && index !== current) return;
-      pointerCard = stop;
-      if (!desktop.matches) activate(index);
-      if (!card.open) {
+    let timer;
+    // Preview only at the explicit disclosure, so reading and scrolling stay stable.
+    disclosure.addEventListener("pointerenter", () => {
+      if (!hover.matches || card.open) return;
+      timer = setTimeout(() => {
         preview = true;
         card.open = true;
-      }
+        activate(index);
+      }, 250);
     });
-    stop.addEventListener("pointerleave", () => {
+    disclosure.addEventListener("pointerleave", () => clearTimeout(timer));
+    card.addEventListener("pointerleave", () => {
+      clearTimeout(timer);
       if (preview && !card.contains(document.activeElement)) card.open = false;
       preview = false;
-      pointerCard = null;
     });
     summary.addEventListener("click", (event) => {
+      clearTimeout(timer);
       if (preview) {
         event.preventDefault();
         preview = false;
@@ -148,30 +110,29 @@
     card.addEventListener("toggle", () => {
       if (card.open) activate(index);
     });
-    card.addEventListener("pointermove", (event) => {
-      if (!desktop.matches || reduced.matches || pointerCard !== stop) return;
-      const rect = summary.getBoundingClientRect();
-      const x = Math.max(
-        -1,
-        Math.min(1, ((event.clientX - rect.left) / rect.width) * 2 - 1),
-      );
-      const y = Math.max(
-        -1,
-        Math.min(1, ((event.clientY - rect.top) / rect.height) * 2 - 1),
-      );
-      card.style.setProperty("--tilt-x", `${-y * 3}deg`);
-      card.style.setProperty("--tilt-y", `${x * 4}deg`);
-    });
-    stop.addEventListener("pointerleave", () => {
-      card.style.setProperty("--tilt-x", "0deg");
-      card.style.setProperty("--tilt-y", "0deg");
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && card.open) {
+        card.open = false;
+        preview = false;
+        summary.focus();
+      }
     });
   });
-  window.addEventListener("scroll", schedule, { passive: true });
-  window.addEventListener("resize", () => {
-    current = -1;
+
+  function setMapMode() {
+    map.open = !mobile.matches;
     schedule();
-  });
-  desktop.addEventListener("change", setMode);
-  setMode();
+  }
+  // Keep a phone's expanded map from obscuring the chapter selected by a link.
+  document
+    .querySelectorAll(".career-overview a, .career-start, .atlas-next")
+    .forEach((link) => {
+      link.addEventListener("click", () => {
+        if (mobile.matches) map.open = false;
+      });
+    });
+  window.addEventListener("scroll", schedule, { passive: true });
+  window.addEventListener("resize", schedule);
+  mobile.addEventListener("change", setMapMode);
+  setMapMode();
 })();
