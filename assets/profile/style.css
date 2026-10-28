@@ -224,64 +224,19 @@ em {
   line-height: 1.6;
   display: block;
 }
-.section {
-  padding: 100px 7%;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 10%;
-}
+
 h2 {
   font: 400 clamp(40px, 4.4vw, 62px)/1.08 var(--serif);
   letter-spacing: -1.7px;
   margin-bottom: 24px;
 }
-.section-intro > p:last-child {
-  font-size: 14px;
-  line-height: 1.8;
-  color: var(--quiet);
-}
-.chapter {
-  display: grid;
-  grid-template-columns: 42px 1fr;
-  gap: 20px;
-  padding: 28px 0;
-  border-top: 1px solid var(--line);
-}
-.chapter:last-child {
-  border-bottom: 1px solid var(--line);
-}
-.chapter-number {
-  font: italic 15px var(--serif);
-  color: var(--quiet);
-  padding-top: 7px;
-}
-.current .chapter-number {
-  color: var(--accent);
-}
-h3 {
+
+.current h3 {
   font: 400 30px var(--serif);
   letter-spacing: -0.6px;
   margin-bottom: 9px;
 }
-h3 a span {
-  font: 18px var(--sans);
-  color: var(--accent);
-  margin-left: 10px;
-}
-.chapter .role {
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 15px;
-}
-.chapter p:last-child {
-  font-size: 14px;
-  line-height: 1.85;
-  color: var(--quiet);
-  max-width: 510px;
-  margin-bottom: 0;
-}
+
 .library-card {
   margin: 0 7%;
   padding: 48px 6%;
@@ -472,14 +427,7 @@ footer a {
     grid-template-columns: repeat(2, 1fr);
     gap: 28px;
   }
-  .section {
-    padding: 70px 6%;
-    gap: 6%;
-  }
-  .chapter {
-    gap: 10px;
-    grid-template-columns: 28px 1fr;
-  }
+
   .library-card {
     margin: 0 6%;
     padding: 36px;
@@ -546,23 +494,7 @@ footer a {
   .credentials span {
     font-size: 11px;
   }
-  .section {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  .section-intro h2 br {
-    display: none;
-  }
-  .section-intro > p:last-child {
-    display: none;
-  }
-  .section h2 {
-    font-size: 44px;
-  }
-  .chapter {
-    grid-template-columns: 34px 1fr;
-    padding: 25px 0;
-  }
+
   .library-card {
     padding: 30px 25px;
     position: relative;
@@ -605,5 +537,367 @@ footer a {
   }
   * {
     transition: none !important;
+  }
+}
+
+.career {
+  padding: 90px 7% 100px;
+}
+.career-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+.career-heading h2 {
+  margin-bottom: 0;
+  font-size: clamp(40px, 4.2vw, 60px);
+}
+.career-heading > p {
+  max-width: 300px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--quiet);
+  margin: 0 0 5px;
+}
+.career-map {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 48px;
+}
+.era {
+  padding: 28px 0 34px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.era-meta {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--quiet);
+  font-size: 10px;
+  letter-spacing: 0.6px;
+}
+.era-index {
+  width: 29px;
+  height: 29px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font: italic 15px var(--serif);
+  flex-shrink: 0;
+}
+.era-visual {
+  height: 215px;
+  margin: 26px 0 28px;
+  background: var(--hover);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 30px 20px;
+}
+.diagram-label,
+.diagram-caption {
+  position: absolute;
+  left: 20px;
+  font-size: 9px;
+  letter-spacing: 1.1px;
+  color: var(--quiet);
+}
+.diagram-label {
+  top: 17px;
+  text-transform: uppercase;
+}
+.diagram-caption {
+  bottom: 16px;
+  letter-spacing: 0.4px;
+}
+.prediction svg {
+  width: 100%;
+  height: 140px;
+}
+.diagram-grid {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.diagram-line {
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+.diagram-points {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+.era h3 {
+  font: 400 clamp(29px, 2.8vw, 38px)/1.12 var(--serif);
+  letter-spacing: -1px;
+  margin-bottom: 18px;
+}
+.era > p {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--quiet);
+  margin-bottom: 25px;
+  max-width: 480px;
+}
+.era > p a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.era-companies {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.era-companies strong {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+.era-companies strong span {
+  color: var(--accent);
+  padding: 0 4px;
+}
+.era-companies > span {
+  font-size: 10px;
+  color: var(--quiet);
+  line-height: 1.7;
+}
+.venture-flow {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  width: 100%;
+  justify-content: center;
+  font: 18px var(--serif);
+}
+.venture-seed {
+  border: 1px dashed var(--accent);
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  display: grid;
+  place-items: center;
+  font-style: italic;
+}
+.flow-arrow {
+  color: var(--accent);
+}
+.venture-products {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.venture-products > span {
+  border-left: 2px solid var(--accent);
+  padding: 4px 0 4px 15px;
+}
+.venture-products small {
+  display: block;
+  font: 9px var(--sans);
+  color: var(--quiet);
+  margin-top: 5px;
+}
+.ecosystem-circles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+}
+.ecosystem-circles span {
+  width: 116px;
+  height: 116px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  margin-left: -20px;
+  font: 19px/1.2 var(--serif);
+  background: transparent;
+}
+.ecosystem-circles span:nth-child(2) {
+  border-style: dashed;
+  color: var(--accent);
+  z-index: 1;
+}
+.agent-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+}
+.agent-flow > span {
+  font: 17px/1.3 var(--serif);
+  padding: 14px 12px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  border-radius: 12px 12px 12px 0;
+}
+.agent-flow > span:last-child {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.agent-flow b {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--accent);
+}
+.career-now {
+  border-block: 1px solid var(--accent);
+  background: var(--hover);
+  padding: 36px;
+  display: grid;
+  grid-template-columns: 160px 1fr 70px;
+  gap: 24px;
+  margin-top: 14px;
+}
+.now-marker {
+  font-size: 10px;
+  color: var(--accent);
+  padding-top: 9px;
+}
+.career-now h3 {
+  font: 400 32px/1.2 var(--serif);
+  letter-spacing: -0.6px;
+  margin-bottom: 14px;
+}
+.career-now p {
+  font-size: 14px;
+  color: var(--quiet);
+  line-height: 1.85;
+  max-width: 650px;
+  margin-bottom: 16px;
+}
+.career-now .text-link {
+  display: inline-block;
+  color: var(--accent);
+}
+.now-date {
+  font: italic 16px/1.5 var(--serif);
+  color: var(--quiet);
+  text-align: right;
+  padding-top: 6px;
+}
+@media (max-width: 900px) {
+  .career {
+    padding: 70px 6%;
+  }
+  .career-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .career-heading > p {
+    max-width: 100%;
+  }
+  .career-map {
+    gap: 0 30px;
+  }
+  .era-visual {
+    padding-inline: 12px;
+  }
+  .agent-flow {
+    gap: 6px;
+  }
+  .agent-flow > span {
+    font-size: 15px;
+    padding: 12px 8px;
+  }
+  .ecosystem-circles span {
+    width: 95px;
+    height: 95px;
+    font-size: 17px;
+  }
+  .career-now {
+    grid-template-columns: 1fr 70px;
+    gap: 18px;
+    padding: 28px;
+  }
+  .now-marker {
+    grid-column: 1/-1;
+  }
+  .now-date {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+@media (max-width: 580px) {
+  .career {
+    padding-block: 60px;
+  }
+  .career-heading {
+    margin-bottom: 32px;
+  }
+  .career-heading h2 {
+    font-size: 42px;
+  }
+  .career-heading > p {
+    font-size: 13px;
+  }
+  .career-map {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .era {
+    padding-bottom: 32px;
+  }
+  .era-visual {
+    margin-block: 22px;
+    height: 200px;
+  }
+  .era h3 {
+    font-size: 34px;
+  }
+  .era-meta {
+    font-size: 9px;
+  }
+  .era-companies > span {
+    font-size: 10px;
+  }
+  .era-present h3 br {
+    display: none;
+  }
+  .career-now {
+    padding: 24px;
+    grid-template-columns: 1fr;
+  }
+  .career-now h3 {
+    font-size: 29px;
+  }
+  .now-date {
+    grid-column: 1;
+    grid-row: auto;
+    text-align: left;
+    font: 11px var(--sans);
+  }
+  .now-date br {
+    display: none;
+  }
+  .now-marker {
+    padding: 0;
+  }
+  .ecosystem-circles span {
+    width: 110px;
+    height: 110px;
+  }
+  .agent-flow > span {
+    font-size: 17px;
+    padding: 14px 12px;
   }
 }
