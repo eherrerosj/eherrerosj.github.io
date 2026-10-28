@@ -1241,3 +1241,252 @@ footer a {
     transition: none;
   }
 }
+.deck-heading,
+.deck-controls {
+  display: none;
+}
+@media (min-width: 1000px) {
+  .deck-mode .journey-layout {
+    align-items: start;
+    gap: 7%;
+    grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.3fr);
+  }
+  .deck-mode .journey-timeline {
+    height: calc(8 * 48vh + 700px);
+    padding: 0;
+    border: 0;
+    position: relative;
+  }
+  .deck-mode .deck-stage {
+    position: sticky;
+    top: 30px;
+    height: 700px;
+    max-height: calc(100svh - 60px);
+    perspective: 1400px;
+  }
+  .deck-mode .deck-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    padding: 0 0 20px;
+    margin-bottom: 55px;
+    gap: 15px;
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+  .deck-mode .deck-count {
+    font-variant-numeric: tabular-nums;
+    color: var(--quiet);
+    letter-spacing: 2px;
+  }
+  .deck-mode .journey-chapter {
+    display: none;
+  }
+  .deck-mode .journey-stop {
+    position: absolute;
+    top: 82px;
+    left: 8px;
+    right: 8px;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(75px) scale(0.94);
+    transition:
+      transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.35s,
+      visibility 0.35s;
+    isolation: auto;
+    scroll-margin-top: 0;
+  }
+  .deck-mode .journey-stop.is-reading {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+  .deck-mode .journey-stop.is-stacked {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(calc(-15px * var(--deck-depth)))
+      translateX(calc(4px * var(--deck-depth))) rotate(var(--deck-angle))
+      scale(calc(1 - var(--deck-depth) * 0.025));
+    pointer-events: none;
+  }
+  .deck-mode .journey-stop.is-stacked .career-card {
+    background: var(--hover);
+    box-shadow: 0 8px 20px #302b2610;
+  }
+  .deck-mode .journey-stop.is-stacked summary {
+    opacity: 0.12;
+  }
+  .deck-mode .career-card {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--panel);
+    box-shadow:
+      0 2px 3px #302b2606,
+      0 20px 50px #302b2618;
+    transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+    transition:
+      transform 0.3s ease-out,
+      box-shadow 0.3s,
+      border-color 0.3s;
+    transform-style: preserve-3d;
+  }
+  .deck-mode .career-card summary {
+    padding: 32px 34px 22px;
+    border-radius: 14px;
+    background: radial-gradient(
+      ellipse at top right,
+      color-mix(in srgb, var(--accent) 7%, transparent),
+      transparent 70%
+    );
+  }
+  .deck-mode .career-card summary::before {
+    display: none;
+  }
+  .deck-mode .career-card .stop-meta {
+    margin-bottom: 40px;
+  }
+  .deck-mode .career-card h3 {
+    font-size: clamp(30px, 2.9vw, 42px);
+    margin-bottom: 13px;
+    letter-spacing: -1px;
+  }
+  .deck-mode .career-card .stop-role {
+    font: 400 23px/1.4 var(--serif);
+    color: var(--quiet);
+    letter-spacing: -0.2px;
+  }
+  .deck-mode .career-card .stop-city {
+    border-radius: 20px;
+    padding: 6px 11px;
+    font-size: 11px;
+  }
+  .deck-mode .card-disclosure {
+    margin-top: 38px;
+    padding-top: 18px;
+    border-top-style: solid;
+    font-size: 11px;
+  }
+  .deck-mode .card-plus {
+    width: 32px;
+    height: 32px;
+    font-size: 23px;
+  }
+  .deck-mode .career-card[open] {
+    border-radius: 14px;
+    border-color: var(--accent);
+  }
+  .deck-mode .career-card[open] summary {
+    border-radius: 14px 14px 0 0;
+  }
+  .deck-mode .card-story {
+    position: static;
+    background: transparent;
+    border: 0;
+    padding: 0 34px 28px;
+    border-radius: 0 0 14px 14px;
+    box-shadow: none;
+    max-height: 240px;
+    overflow: auto;
+    animation: card-reveal 0.2s;
+  }
+  .deck-mode .card-story::before {
+    margin-bottom: 19px;
+    border-top-style: solid;
+  }
+  .deck-mode .stop-description {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  .deck-mode .card-story h4 {
+    font-size: 22px;
+  }
+  .deck-mode .deck-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0 4px;
+    border-top: 1px solid var(--line);
+    background: linear-gradient(var(--accent), var(--accent)) left top /
+      var(--deck-progress, 12.5%) 1px no-repeat;
+  }
+  .deck-mode .deck-controls button {
+    font: 24px var(--serif);
+    color: var(--ink);
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+  }
+  .deck-mode .deck-controls button:hover {
+    background: var(--hover);
+    color: var(--accent);
+  }
+  .deck-mode .deck-controls button:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+  .deck-mode .deck-controls button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+  .deck-mode .deck-position {
+    font: italic 21px var(--serif);
+    color: var(--accent);
+  }
+  .deck-mode .journey-footnote {
+    margin-top: 45px;
+  }
+}
+@media (min-width: 1000px) and (max-height: 850px) {
+  .deck-mode .deck-stage {
+    height: 650px;
+  }
+  .deck-mode .career-card summary {
+    padding: 23px 28px 18px;
+  }
+  .deck-mode .career-card .stop-meta {
+    margin-bottom: 25px;
+  }
+  .deck-mode .card-disclosure {
+    margin-top: 23px;
+    padding-top: 12px;
+  }
+  .deck-mode .card-story {
+    max-height: 190px;
+    padding-inline: 28px;
+  }
+  .deck-mode .deck-heading {
+    padding-bottom: 14px;
+  }
+  .deck-mode .journey-stop {
+    top: 68px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .deck-mode .journey-stop,
+  .deck-mode .career-card {
+    transition: none;
+  }
+  .deck-mode .career-card {
+    transform: none;
+  }
+  .deck-mode .card-story {
+    animation: none;
+  }
+}
+@media (min-width: 1000px) {
+  .deck-mode .journey-atlas {
+    align-self: stretch;
+  }
+}
