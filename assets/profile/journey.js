@@ -60,7 +60,12 @@
 
   function update() {
     scheduled = false;
-    const readingLine = mobile.matches ? 180 : Math.min(220, innerHeight * 0.3);
+    const headerHeight = document.querySelector(".masthead").offsetHeight;
+    const readingLine =
+      headerHeight +
+      (mobile.matches
+        ? 180
+        : Math.min(220, (innerHeight - headerHeight) * 0.3));
     let index = 0;
     stops.forEach((stop, i) => {
       const marker = stop.previousElementSibling
