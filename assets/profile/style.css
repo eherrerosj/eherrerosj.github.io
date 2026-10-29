@@ -589,7 +589,7 @@ footer a {
 }
 .career-overview {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1.2fr) repeat(4, minmax(0, 1fr));
   gap: 0;
   border-bottom: 1px solid var(--line);
   margin-bottom: 80px;
@@ -608,6 +608,9 @@ footer a {
 }
 .career-overview a:first-child {
   padding-left: 0;
+}
+.career-overview a:first-child strong {
+  color: var(--accent);
 }
 .career-overview a:last-child {
   padding-right: 0;
@@ -1100,12 +1103,19 @@ footer a {
     border-bottom: 1px solid var(--line);
     padding: 22px !important;
   }
-  .career-overview a:nth-child(odd) {
+  .career-overview a:first-child {
+    grid-column: 1 / -1;
+  }
+  .career-overview a:first-child,
+  .career-overview a:nth-child(even) {
     border-left: 0;
     padding-left: 0 !important;
   }
-  .career-overview a:nth-child(odd)::before {
+  .career-overview a:nth-child(even)::before {
     left: 0;
+  }
+  .career-overview a:first-child strong {
+    font-size: 30px;
   }
   .overview-date {
     margin-bottom: 16px;
