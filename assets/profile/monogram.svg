@@ -1,0 +1,23 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="4 3 84 64"
+  color="#a24f38"
+  role="img"
+  aria-labelledby="title"
+>
+  <title id="title">Enrique Herreros monogram</title>
+  <path
+    class="monogram-letters"
+    d="M8 42 C18 43 34 35 34 29 C34 23 24 23 18 29 C10 37 12 50 24 50 C38 50 50 29 54 17 C58 6 53 5 49 12 C43 24 43 37 41 49 C47 34 56 28 60 33 C64 38 56 49 63 50 C70 51 77 42 81 38"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="3.6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    class="monogram-flourish"
+    d="M13 61 C31 54 56 55 85 47 C67 54 39 58 13 62 Z"
+    fill="currentColor"
+  />
+</svg>

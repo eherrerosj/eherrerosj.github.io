@@ -75,14 +75,49 @@ a:hover {
   letter-spacing: -0.5px;
 }
 .mark {
-  width: 42px;
+  width: 58px;
   height: 48px;
   display: grid;
   place-items: center;
-  border: 1px solid var(--line);
-  border-radius: 22px 22px 4px 4px;
-  font: italic 23px var(--serif);
+  flex-shrink: 0;
   color: var(--accent);
+  transition: color 0.2s;
+}
+.monogram {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.monogram-flourish {
+  opacity: 0.7;
+}
+.identity:hover .mark,
+.identity:focus-visible .mark {
+  color: var(--ink);
+}
+.identity:hover .monogram-flourish,
+.identity:focus-visible .monogram-flourish {
+  opacity: 1;
+  animation: pen-stroke 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes pen-stroke {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+.book-signature {
+  width: 82px;
+  height: 64px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .identity:hover .monogram-flourish,
+  .identity:focus-visible .monogram-flourish {
+    animation: none;
+  }
 }
 .identity small {
   display: block;
@@ -552,9 +587,8 @@ footer a {
     font-size: 19px;
   }
   .mark {
-    width: 32px;
-    height: 40px;
-    font-size: 20px;
+    width: 50px;
+    height: 44px;
   }
   .intro {
     grid-template-columns: 1fr;
